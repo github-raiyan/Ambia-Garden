@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    tools:context=".LoginActivity">
+
+    <Spinner
+        android:id="@+id/spinner_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_shape"
+        android:paddingLeft="12dp"
+        app:layout_constraintBottom_toTopOf="@id/edtxt_password"
+        app:layout_constraintEnd_toEndOf="@id/edtxt_password"
+        app:layout_constraintStart_toStartOf="@id/edtxt_password" />
+
+    <EditText
+        android:id="@+id/edtxt_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/round_shape"
+        android:hint="Password"
+        android:inputType="numberPassword"
+        android:paddingLeft="15dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="17dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/img_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="7dp"
+        android:background="@color/white"
+        android:src="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@id/edtxt_password"
+        app:layout_constraintEnd_toEndOf="@id/edtxt_password"
+        app:layout_constraintTop_toTopOf="@id/edtxt_password" />
+
+    <TextView
+        android:id="@+id/wrongPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:background="#BA1E1E"
+
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/edtxt_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edtxt_password"
+        app:layout_constraintTop_toTopOf="@id/img_eye" />
+
+    <TextView
+        android:id="@+id/wrongUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:background="#BA1E1E"
+
+        android:text=""
+        android:textColor="@color/white"
+        android:layout_marginBottom="3dp"
+        android:textSize="12dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spinner_username"
+         />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_shape"
+        android:onClick="loginButton"
+        android:text="Login"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@id/edtxt_password"
+        app:layout_constraintStart_toStartOf="@id/edtxt_password"
+        app:layout_constraintTop_toBottomOf="@id/edtxt_password" />
+
+    <ProgressBar
+        android:id="@+id/progressbar_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#FF5722"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/spinner_username"
+        app:layout_constraintEnd_toEndOf="@id/spinner_username"
+        app:layout_constraintStart_toStartOf="@id/spinner_username"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

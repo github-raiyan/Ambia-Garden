@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdline_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdline_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".6999" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeNewConstraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/gdline_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lbl_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="#A6F16E30"
+            android:padding="7dp"
+            android:text=""
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/homeNewConstraintLayout" />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_progressbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/lbl_blue"
+            android:indeterminateTint="#FB3F03"
+            android:visibility="invisible"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lbl_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:background="@color/primaryVariant"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@id/lbl_green"
+            app:layout_constraintTop_toBottomOf="@id/lbl_date">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/lbl_meterNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/lbl_perUnit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_perUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/lbl_preReading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_meterNo" />
+
+                <TextView
+                    android:id="@+id/lbl_preReading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/lbl_currReading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_perUnit" />
+
+                <TextView
+                    android:id="@+id/lbl_currReading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/lbl_currBalance"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_preReading" />
+
+                <TextView
+                    android:id="@+id/lbl_currBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/lbl_avgBill"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_currReading" />
+
+                <TextView
+                    android:id="@+id/loadtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:text=""
+                    android:textColor="#ED0909"
+                    android:textSize="16dp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="@id/lbl_currBalance"
+                    app:layout_constraintTop_toTopOf="@id/lbl_currBalance" />
+
+                <TextView
+                    android:id="@+id/lbl_avgBill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/lbl_possibleDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_currBalance" />
+                <TextView
+                    android:id="@+id/lbl_possibleDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_avgBill" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lbl_green"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="#6F12E68A"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/homeNewConstraintLayout"
+            app:layout_constraintEnd_toEndOf="@id/lbl_blue"
+            app:layout_constraintStart_toStartOf="@id/lbl_blue"
+            app:layout_constraintTop_toBottomOf="@id/gdline_blue">
+
+            <TextView
+                android:id="@+id/lbl_lastRecharge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="0dp"
+                android:background="@color/white"
+                android:gravity="left"
+                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:text=""
+                app:layout_constraintBottom_toTopOf="@id/lbl_canUse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbl_canUse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="0dp"
+                android:background="@color/white"
+                android:gravity="left"
+                android:padding="5dp"
+                android:paddingStart="20dp"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lbl_lastRecharge"
+                app:layout_goneMarginBottom="8dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="#FF5722"
+            android:visibility="invisible"
+
+            app:layout_constraintStart_toEndOf="@id/lbl_date"
+            app:layout_constraintTop_toTopOf="@id/lbl_blue" />
+
+        <ImageButton
+            android:id="@+id/btn_update"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/round_shape"
+            android:src="@drawable/update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
