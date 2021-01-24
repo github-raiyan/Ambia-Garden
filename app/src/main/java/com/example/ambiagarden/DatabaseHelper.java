@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(CREATE_TABLE);
-            Toast.makeText(context,"Database created",Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"Database created",Toast.LENGTH_LONG).show();
             //System.out.println("on create is called");
 
         }catch (Exception e){
@@ -82,15 +82,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
         }
-        System.out.println("older->>>>>>"+oldDate+"  -----newer->>>>>"+newDate);
+        //System.out.println("older->>>>>>"+oldDate+"  -----newer->>>>>"+newDate);
 
-        if(oldDate.equals(newDate)){
-
-            return false;
-        }
-        else{
-            return true;
-        }
+        return !oldDate.equals(newDate);
     }
     private long insertRecord(Record record){
 

@@ -9,17 +9,21 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="about"><b>About</b>\n<i>App version 1.0</i>\nReleased on 01 January, 2021\n<i>Website: sites.google.com/view/ambia-garden-utility</i>\n\n\n\n\n<b>Developer</b>\nMd Rayhan Hossain\n<i>Phone: 01571-219418\nEmail: arduinorayhan@gmail.com</i>\nDepartment of Computer Science and Engineering\nDaffodil International University</string>
+    <string name="title">Hello \nWorld!</string>
+    <string name="mobile_banking">Recharge by mobile banking</string>
     <string-array name="usernames">
         <item>User name</item>
         <item>shop-01</item>
         <item>shop-02</item>
         <item>shop-04</item>
-        <item>shop-05</item>
         <item>shop-06</item>
         <item>shop-07</item>
+        <item>shop-08</item>
         <item>flat-01</item>
         <item>flat-02</item>
         <item>flat-03</item>
+        <item>admin</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

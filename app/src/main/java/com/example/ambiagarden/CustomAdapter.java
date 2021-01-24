@@ -41,7 +41,7 @@ public class CustomAdapter extends BaseAdapter {
 
         }
         //System.out.println("-------->>>>>>>>>"+convertView);
-        TextView datetxt =(TextView) convertView.findViewById(R.id.txt_date);
+        TextView datetxt = convertView.findViewById(R.id.txt_date);
         TextView readingtxt=convertView.findViewById(R.id.readingtxt);
         TextView amounttxt=convertView.findViewById(R.id.amounttxt);
 

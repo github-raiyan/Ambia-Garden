@@ -7,278 +7,272 @@
     tools:context=".HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="#65FFFFFF">
 
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdline_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".90" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdline_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".6999" />
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/homeNewConstraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-
-            app:layout_constraintBottom_toBottomOf="@id/gdline_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/lbl_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#A6F16E30"
-            android:padding="7dp"
-            android:text=""
-            android:textSize="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/homeNewConstraintLayout" />
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_progressbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/lbl_blue"
-            android:indeterminateTint="#FB3F03"
-            android:visibility="invisible"
-            />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lbl_blue"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:background="@color/primaryVariant"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            app:layout_constraintBottom_toTopOf="@id/lbl_green"
-            app:layout_constraintTop_toBottomOf="@id/lbl_date">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llpdf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/lbl_meterNo"
-                    android:layout_width="0dp"
+                    android:id="@+id/lbl_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="#A6F16E30"
+                    android:padding="7dp"
                     android:text=""
-                    app:layout_constraintBottom_toTopOf="@id/lbl_perUnit"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/lbl_perUnit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@id/lbl_preReading"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_meterNo" />
-
-                <TextView
-                    android:id="@+id/lbl_preReading"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@id/lbl_currReading"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_perUnit" />
-
-                <TextView
-                    android:id="@+id/lbl_currReading"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@id/lbl_currBalance"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_preReading" />
-
-                <TextView
-                    android:id="@+id/lbl_currBalance"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/lbl_avgBill"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_currReading" />
-
-                <TextView
-                    android:id="@+id/loadtxt"
+                <ProgressBar
+                    android:id="@+id/home_progressbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30dp"
-                    android:text=""
-                    android:textColor="#ED0909"
-                    android:textSize="16dp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="@id/lbl_currBalance"
-                    app:layout_constraintTop_toTopOf="@id/lbl_currBalance" />
+                    android:indeterminateTint="#FB3F03"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@id/lbl_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/lbl_avgBill"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lbl_blue"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
-                    app:layout_constraintBottom_toTopOf="@id/lbl_possibleDate"
+                    android:layout_marginTop="20dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/primaryVariant"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_date">
+
+                    <TextView
+                        android:id="@+id/lbl_meterNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lbl_perUnit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_meterNo" />
+
+                    <TextView
+                        android:id="@+id/lbl_preReading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_perUnit" />
+
+                    <TextView
+                        android:id="@+id/lbl_currReading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_preReading" />
+
+                    <TextView
+                        android:id="@+id/lbl_currBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_currReading" />
+
+                    <TextView
+                        android:id="@+id/loantxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="5dp"
+                        android:text=""
+                        android:textColor="#ED0909"
+                        android:textSize="16dp"
+                        android:textStyle="italic"
+                        app:layout_constraintEnd_toEndOf="@id/lbl_currBalance"
+                        app:layout_constraintTop_toTopOf="@id/lbl_currBalance" />
+
+                    <TextView
+                        android:id="@+id/lbl_avgBill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_currBalance" />
+
+                    <TextView
+                        android:id="@+id/lbl_possibleDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="28dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_avgBill" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lbl_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#6F12E68A"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_currBalance" />
-                <TextView
-                    android:id="@+id/lbl_possibleDate"
-                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_blue">
+
+                    <TextView
+                        android:id="@+id/lbl_lastRecharge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lbl_canUse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="28dp"
+                        android:background="@color/white"
+                        android:gravity="left"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
+                        android:text=""
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lbl_lastRecharge"
+                        app:layout_goneMarginBottom="8dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressbar_update"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:paddingStart="20dp"
-                    android:text=""
+                    android:indeterminateTint="#FF5722"
+                    android:visibility="invisible"
+
+                    app:layout_constraintStart_toEndOf="@id/lbl_date"
+                    app:layout_constraintTop_toTopOf="@id/lbl_blue" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/txt_waterMask"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_avgBill" />
-
-
+                    android:text="Ambia Garden electricity bill"
+                    android:rotation="-60"
+                    android:textSize="50dp"
+                    android:visibility="invisible"
+                    android:textColor="#72A2A4A3"
+                    android:textStyle="bold"
+                    android:gravity="fill_vertical"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/lbl_green"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="#6F12E68A"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintBottom_toBottomOf="@id/homeNewConstraintLayout"
-            app:layout_constraintEnd_toEndOf="@id/lbl_blue"
-            app:layout_constraintStart_toStartOf="@id/lbl_blue"
-            app:layout_constraintTop_toBottomOf="@id/gdline_blue">
-
-            <TextView
-                android:id="@+id/lbl_lastRecharge"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="0dp"
-                android:background="@color/white"
-                android:gravity="left"
-                android:padding="5dp"
-                android:paddingStart="20dp"
-                android:text=""
-                app:layout_constraintBottom_toTopOf="@id/lbl_canUse"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lbl_canUse"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="0dp"
-                android:background="@color/white"
-                android:gravity="left"
-                android:padding="5dp"
-                android:paddingStart="20dp"
-                android:text=""
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lbl_lastRecharge"
-                app:layout_goneMarginBottom="8dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ProgressBar
-            android:id="@+id/progressbar_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="#FF5722"
-            android:visibility="invisible"
-
-            app:layout_constraintStart_toEndOf="@id/lbl_date"
-            app:layout_constraintTop_toTopOf="@id/lbl_blue" />
 
         <ImageButton
             android:id="@+id/btn_update"
@@ -290,7 +284,16 @@
             android:src="@drawable/update"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+        <ImageButton
+            android:id="@+id/btn_download"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/round_shape"
+            android:tooltipText="text"
+            android:src="@drawable/pdf"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_update" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>

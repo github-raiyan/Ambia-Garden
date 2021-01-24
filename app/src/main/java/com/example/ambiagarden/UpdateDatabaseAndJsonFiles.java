@@ -13,7 +13,7 @@ public class UpdateDatabaseAndJsonFiles {
 
     }
     public void update() {
-        if(!MainActivity.isInternetAvailable()){
+        if(!Check.isNetworkAvailable(context)){
             Toast.makeText(context,"No internet",Toast.LENGTH_SHORT).show();
         }
         JsonFile jsonFile=new JsonFile(context);

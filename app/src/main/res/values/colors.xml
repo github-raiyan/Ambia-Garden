@@ -11,10 +11,13 @@
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#02608B</color>
     <color name="colorAccent">#03DAC5</color>
-
+    <color name="flowtingButton">#ECECEC</color>
 
     <color name="lightGray">#EDEDED</color>
     <color name="red">#9F0B0B</color>
     <color name="numberButton">#535454</color>
     <color name="operatorButton">#097FB3</color>
+    <color name="notification_color">#B500BCD4</color>
+    <color name="low_notification_color">#BCF44336</color>
+    <color name="message_notification_color">#4CAF50</color>
 </resources>

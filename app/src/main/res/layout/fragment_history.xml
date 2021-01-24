@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tittle"
             android:padding="20dp"
-            android:background="#7203A9F4"
+            android:background="#BCFA594D"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <TextView
@@ -53,7 +53,7 @@
             android:divider="#CB000000"
             android:dividerHeight="2px"
             android:id="@+id/listView"
-            android:listSelector="#2D03A9F4"
+            android:listSelector="#996ACA6E"
             app:layout_constraintTop_toBottomOf="@id/tittle"
             app:layout_constraintBottom_toBottomOf="parent">
 

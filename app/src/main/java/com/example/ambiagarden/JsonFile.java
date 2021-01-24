@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,8 +36,9 @@ public class JsonFile {
     }
     public void del(){
         try {
-            userJson=new JSONObject("{}");
+            //userJson=new JSONObject("{}");
             //billJson=new JSONObject("{}");
+            userJson.put("login",false);
             userJsonFileWriter();
             //billJsonFileWriter();
 
@@ -44,12 +46,26 @@ public class JsonFile {
             e.printStackTrace();
         }
     }
-    public void setUserJson(String username,String password,String position){
+    public String getUserName(){
+        String uName=null;
+        if(userJson==null)
+            return uName;
+        try {
+            uName=userJson.getString("userName");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return uName;
+    }
+    public void setUserJson(String username,String password,String position,boolean updateExpirayDate){
         try {
             userJson=new JSONObject("{}");
-            userJson.put("userName",username.toString());
-            userJson.put("password",password.toString());
-            userJson.put("position",position.toString());
+            if(username!=null)
+                userJson.put("userName", username);
+            if(password!=null)
+                userJson.put("password", password);
+            if(position!=null)
+                userJson.put("position", position);
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
             Calendar calendar= Calendar.getInstance();
             try{
@@ -57,9 +73,12 @@ public class JsonFile {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            calendar.add(Calendar.DAY_OF_MONTH,31);
+            calendar.add(Calendar.DAY_OF_MONTH,366);
             String ExpDate=simpleDateFormat.format(calendar.getTime());
-            userJson.put("expiryDate",ExpDate);
+            if(updateExpirayDate){
+                System.out.println("updating exp---->>>>>>>>>>");
+                userJson.put("expiryDate",ExpDate);
+            }
             userJson.put("login",true);
             userJsonFileWriter();
         } catch (JSONException e) {
@@ -90,6 +109,11 @@ public class JsonFile {
 
     void userJsonFileReader(){
         String data="";
+        File file= new File(context.getFilesDir(),"userJson.txt");
+        if(!file.exists()){
+            System.out.println("User File not exist---->>>>>");
+            return;
+        }
         try {
             FileInputStream fileInputStream = context.openFileInput("userJson.txt");
             InputStreamReader inputStreamReader= new InputStreamReader(fileInputStream);
@@ -111,6 +135,11 @@ public class JsonFile {
     }
     void billJsonFileReader(){
         String data="";
+        File file= new File(context.getFilesDir(),"billJson.txt");
+        if(!file.exists()){
+            System.out.println("BILL File not exist---->>>>>");
+            return;
+        }
         try {
             FileInputStream fileInputStream = context.openFileInput("billJson.txt");
             InputStreamReader inputStreamReader= new InputStreamReader(fileInputStream);
@@ -162,7 +191,9 @@ public class JsonFile {
     public boolean isValidUser(){
         try {
             boolean status=userJson.getBoolean("login");
+
             if(!status){
+
                 return false;
             }
         } catch (Exception e) {
@@ -193,5 +224,4 @@ public class JsonFile {
         }
         return  true;
     }
-
 }

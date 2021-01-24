@@ -151,5 +151,4 @@ public class UserNameAndPasswords extends AsyncTask<Void,Void,Void> {
     class Record{
         String userName,password,position;
     }
-
 }

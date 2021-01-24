@@ -119,7 +119,9 @@ public class CreateUser extends AsyncTask<Void,Void,Void> {
             String str=object.getString("$t");
             str=modifyString(str);
             object=new JSONObject(str);
-
+            if(!object.has(key)){
+                return null;
+            }
             return object.getString(key);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -189,6 +191,4 @@ public class CreateUser extends AsyncTask<Void,Void,Void> {
             System.out.println("Date: "+history.get(i).date+" reading: "+history.get(i).reading+" amount: "+history.get(i).amount);
         }
     }
-
-
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824711097211",
+    "project_id": "ambia-garden",
+    "storage_bucket": "ambia-garden.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824711097211:android:233d8a975c5f05d8baabde",
+        "android_client_info": {
+          "package_name": "com.example.ambiagarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824711097211-ttoslbptp3ivi7a2h3mktbcgi7ic3n2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB22usGpd0fF9vmxLRxZVvz210YukZWioE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824711097211-ttoslbptp3ivi7a2h3mktbcgi7ic3n2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

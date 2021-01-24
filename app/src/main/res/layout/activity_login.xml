@@ -80,12 +80,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/spinner_username"
          />
-
+    <TextView
+        android:id="@+id/txt_forgertPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="forgetPass"
+        android:text="Forget password"
+        android:textStyle="bold"
+        android:textColor="@color/low_notification_color"
+        app:layout_constraintEnd_toEndOf="@id/edtxt_password"
+        app:layout_constraintStart_toStartOf="@id/edtxt_password"
+        app:layout_constraintTop_toBottomOf="@id/edtxt_password" />
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_shape"
         android:onClick="loginButton"
         android:text="Login"

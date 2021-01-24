@@ -35,8 +35,6 @@ public class HistoryFragment extends Fragment {
 
         listView=view.findViewById(R.id.listView);
         update();
-
-
         return view;
     }
     void update(){
@@ -54,12 +52,7 @@ public class HistoryFragment extends Fragment {
             reading[i]=history.get(i).reading;
             amount[i]=history.get(i).amount;
         }
-
-
-
         CustomAdapter adapter=new CustomAdapter(getContext(),date,reading,amount);
         listView.setAdapter(adapter);
-
     }
-
 }

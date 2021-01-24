@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -32,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        JsonFile destroyingJson=new JsonFile(getApplicationContext());
-        destroyingJson.del();
+        System.out.println("calleeeeeed login a>>>>>>>>>>>");
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
         userNamesString=getResources().getStringArray(R.array.usernames);
         editTextPassword=findViewById(R.id.edtxt_password);
         spinner=findViewById(R.id.spinner_username);
@@ -62,8 +63,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     public void loginButton(View view) {
+        if(!Check.isNetworkAvailable(getApplicationContext())){
+            Toast.makeText(getApplicationContext(),"No Internet",Toast.LENGTH_SHORT).show();
+            return;
+        }
         class UserInfo extends UserNameAndPasswords{
 
             UserInfo(Context context, String username, String password) {
@@ -72,36 +76,37 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             protected void onPreExecute() {
-                progressBar.setVisibility(view.VISIBLE);
-
-
+                progressBar.setVisibility(View.VISIBLE);
             }
-
             @Override
             protected void onPostExecute(Void aVoid) {
                 int returnValue=verifyUser();
                 if(returnValue==1){
                     //save Jsonfile and goto main activity
                     JsonFile jsonFile=new JsonFile(getApplicationContext());
-                    jsonFile.setUserJson(username,password,position);
-
-
+                    jsonFile.setUserJson(username,password,position,true);
                     class CreatingBillJson extends CreateUser{
 
                         CreatingBillJson(Context context, String workSheetID, char position) {
                             super(context, workSheetID, position);
                         }
-
                         @Override
                         protected void onPreExecute() {
-                            progressBar.setVisibility(view.VISIBLE);
+                            progressBar.setVisibility(View.VISIBLE);
                         }
 
                         @Override
                         protected void onPostExecute(Void aVoid) {
                             jsonFile.setBillJson(bill);
-                            progressBar.setVisibility(view.GONE);
-                            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(),"Successfullly login",Toast.LENGTH_SHORT).show();
+                            Intent intent;
+                            if(jsonFile.getUserName().equals("admin")){
+                                intent=new Intent(LoginActivity.this,AdminPanel.class);
+                            }
+                            else{
+                                intent=new Intent(LoginActivity.this,MainActivity.class);
+                            }
                             startActivity(intent);
                             finish();
                         }
@@ -116,30 +121,23 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     CreatingBillJson creatingBillJson=new CreatingBillJson(getApplicationContext(),workSheetId,pss);
                     creatingBillJson.execute();
-
-
                     //System.out.println("possition is-------->>>>>>>"+position);
                 }
                 else if (returnValue==0){
-
                     Toast.makeText(context,"Wrong Password",Toast.LENGTH_LONG).show();
-
                     //System.out.println("wrong password-------->>>>>>>>>>");
                 }
                 else{
-
                     Toast.makeText(context,"Invalid user name",Toast.LENGTH_LONG).show();
-
                     //System.out.println("wrong username-------->>>>>>>>>>");
                 }
-                progressBar.setVisibility(view.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
         }
         userName=spinner.getSelectedItem().toString();
         passWord=editTextPassword.getText().toString();
         UserInfo userInfo=new UserInfo(getApplicationContext(),userName,passWord);
         userInfo.execute();
-
     }
     void sleep(){
         try{
@@ -149,5 +147,15 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
-
+    public void forgetPass(View view) {
+            String addresses="arduinorayhan@gmail.com";
+            String subject="Forget password :Ambia Garden";
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"+addresses)); // only email apps should handle this
+            //intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
 }

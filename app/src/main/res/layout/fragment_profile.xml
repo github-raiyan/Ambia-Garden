@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="40dp"
-        android:background="#C6FFFFFF">
+        android:background="#DDFFFFFF">
 
         <ScrollView
             android:layout_width="0dp"
@@ -59,6 +59,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_expDate"
                     android:text=""
+                    android:textAlignment="center"
                     app:layout_constraintTop_toBottomOf="@id/txt_password"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -76,20 +77,97 @@
                     android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"/>
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="80dp"
+                    app:layout_constraintTop_toBottomOf="@id/btn_logout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/bkash"
+                    android:id="@+id/img_bkash"
+                    app:layout_constraintEnd_toStartOf="@id/img_rocket"
+                    />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="@id/img_bkash"
+                    app:layout_constraintStart_toEndOf="@id/img_bkash"
+                    app:layout_constraintEnd_toStartOf="@id/img_nagad"
+                    android:src="@drawable/rocket"
+                    android:id="@+id/img_rocket"
+                    />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="@id/img_bkash"
+                    app:layout_constraintStart_toEndOf="@id/img_rocket"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/nagad"
+                    android:id="@+id/img_nagad"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+
+                    app:layout_constraintTop_toBottomOf="@id/txt_number"
+                    android:id="@+id/txt_mobileBanking"
+                    android:text="@string/mobile_banking"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintTop_toBottomOf="@id/img_bkash"
+                    android:text="01571219418"
+                    android:padding="3dp"
+                    android:background="@color/white"
+                    android:id="@+id/txt_number"
+                    android:textStyle="italic"
+                    android:textSize="15sp"
+                    />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_copy"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/txt_number"
+                    android:src="@drawable/copy"
+                    app:layout_constraintTop_toTopOf="@id/txt_number"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/about"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_logout"
-                    android:text="   This app is developed by\n         Md Raiyan Hossain\n          Depertment of CSE\nDaffodil International University"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/txt_number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@string/about"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginTop="120dp"/>
 
-                    android:layout_marginTop="150dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/msg_flowtBtn"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="#03A9F4"
+            android:src="@drawable/flowting"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
