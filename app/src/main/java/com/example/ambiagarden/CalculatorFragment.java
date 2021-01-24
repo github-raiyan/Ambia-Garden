@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 
 public class CalculatorFragment extends Fragment {
 
@@ -238,6 +239,9 @@ public class CalculatorFragment extends Fragment {
         String s=monitor.getText().toString();
         if(s.isEmpty()){
             return;
+        }
+        if(s.charAt(0)=='+'){
+            s=""+s.subSequence(1,s.length());
         }
         try {
             Brain brain=new Brain(s);
