@@ -22,8 +22,9 @@ public class UpdateUserInformation extends AsyncTask<Void,Void,Void>{
     String userName;
     Context context;
     public JSONObject response;
-    String link="https://ifconfig.co/json";
+    String link="https://api.ipregistry.co/?key=gjyz3t4qbhhw1v";
     public UpdateUserInformation(Context context) {
+
         this.context=context;
 
         JsonFile jsonFile = new JsonFile(context);
@@ -60,13 +61,16 @@ public class UpdateUserInformation extends AsyncTask<Void,Void,Void>{
     }
 
     void updateToFirebase(){
+        if(response==null){
+            return;
+        }
         String s=response.toString();
         String ip="";
         String device="";
         try {
-            ip=response.getString("ip");
-            ip=ip.replace('.','-');
-            device=response.getJSONObject("user_agent").getString("comment");
+            //ip=response.getString("ip");
+            //ip=ip.replace('.','-');
+            device=response.getJSONObject("user_agent").getString("header");
             device=device.replace('.',' ');
             device=device.replace(';',' ');
             device=device.replace('/',' ');

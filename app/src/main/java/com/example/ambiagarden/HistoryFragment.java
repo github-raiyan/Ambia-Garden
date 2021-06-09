@@ -38,7 +38,10 @@ public class HistoryFragment extends Fragment {
         return view;
     }
     void update(){
-
+        JsonFile jsonFile=new JsonFile(getContext());
+        if(jsonFile.getUserName().equals("admin")){
+            return;
+        }
         DatabaseHelper databaseHelper=new DatabaseHelper(getContext());
         databaseHelper.readData(history);
 

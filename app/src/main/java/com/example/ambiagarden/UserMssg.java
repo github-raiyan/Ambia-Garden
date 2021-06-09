@@ -37,6 +37,8 @@ public class UserMssg extends AppCompatActivity {
         imgUser=findViewById(R.id.img_usr);
         backBtn=findViewById(R.id.back_btn);
 
+        UpdateUserInformation updateUserInformation=new UpdateUserInformation(this);
+        updateUserInformation.execute();
         getMssg();
         mssgStatustoFirebase("yes");
 

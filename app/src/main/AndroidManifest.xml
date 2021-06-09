@@ -18,7 +18,6 @@
         android:theme="@style/Theme.AmbiaGarden">
         <activity android:name=".AdminMssg"></activity>
         <activity android:name=".AdminPanel" />
-        <activity android:name=".Pdfviewer" />
         <activity android:name=".UserMssg" />
         <activity android:name=".AppEnded" />
         <activity

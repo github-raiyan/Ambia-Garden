@@ -129,6 +129,8 @@ public class UserNameAndPasswords extends AsyncTask<Void,Void,Void> {
             if(username.equals(loginList.get(i).userName)){
                 if(password.equals(loginList.get(i).password)){
                     position=loginList.get(i).position;
+                    JsonFile newJson=new JsonFile(context);
+                    newJson.setUserJson(username,password,position,false);
                     return 1;
                 }
                 else {

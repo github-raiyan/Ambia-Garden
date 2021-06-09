@@ -20,6 +20,7 @@ import java.util.Date;
 public class JsonFile {
     JSONObject userJson=null;
     JSONObject billJson=null;
+    JSONObject preUserJson=null;
     Context context;
 
     JsonFile(Context context){
@@ -75,10 +76,13 @@ public class JsonFile {
             }
             calendar.add(Calendar.DAY_OF_MONTH,366);
             String ExpDate=simpleDateFormat.format(calendar.getTime());
-            if(updateExpirayDate){
-                System.out.println("updating exp---->>>>>>>>>>");
-                userJson.put("expiryDate",ExpDate);
+            if( !updateExpirayDate){
+                JsonFile extraJsonForGetDate=new JsonFile(context);
+                if(extraJsonForGetDate.getUserJson()!=null)
+                    ExpDate=extraJsonForGetDate.getUserJson().getString("expiryDate");
             }
+            System.out.println("updating exp---->>>>>>>>>>");
+            userJson.put("expiryDate",ExpDate);
             userJson.put("login",true);
             userJsonFileWriter();
         } catch (JSONException e) {

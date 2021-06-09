@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
+import android.os.StrictMode;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Vector;
 
 public class HomeFragment extends Fragment {
@@ -135,8 +137,8 @@ public class HomeFragment extends Fragment {
             else {
                 Toast.makeText(getContext(), "PDF saved to Internal storage/Downloads/Ambia Garden", Toast.LENGTH_LONG).show();
             }
-            //openGeneratedPDF();
-            openPDFviwer();
+            openGeneratedPDF();
+            //openPDFviwer();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -193,37 +195,33 @@ public class HomeFragment extends Fragment {
         return  path;
     }
     private void openGeneratedPDF(){
-
-        File file = new File(getPath());
-        if (android.os.Build.VERSION.SDK_INT >= 29) {
-            if (file.exists())
-            {
-                Intent target=new Intent(Intent.ACTION_VIEW);
-                Uri uri = Uri.fromFile(file);
-                target.setDataAndType(uri, "application/pdf");
-                target.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //Intent intent = Intent.createChooser(target, "Open File");
-                Intent intent=new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(uri,"application/pdf");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                try
-                {
-                    startActivity(intent);
-                }
-                catch(ActivityNotFoundException e)
-                {
-                    Toast.makeText(getContext(), "No Application available to view pdf", Toast.LENGTH_LONG).show();
-                }
-                catch (Exception e){
-                }
+        if(Build.VERSION.SDK_INT>=24){
+            try{
+                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                m.invoke(null);
+            }catch(Exception e){
+                e.printStackTrace();
             }
         }
+        File file = new File(getPath());
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
+        try {
+            startActivity(intent);
+        }
+        catch (ActivityNotFoundException e) {
+            Toast.makeText(getContext(),
+                    "No Application Available to View PDF",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
     void openPDFviwer(){
-        Intent intent=new Intent(getContext(), Pdfviewer.class);
-        startActivity(intent);
+        //Intent intent=new Intent(getContext(), Pdfviewer.class);
+        //startActivity(intent);
     }
     void findViews(View view){
         progressBar=view.findViewById(R.id.home_progressbar);

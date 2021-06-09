@@ -96,12 +96,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
     void checkStatus(){
-        if(Check.isNetworkAvailable(getApplicationContext())){
-            internetAvailable=true;
-        }
-        else{
-            internetAvailable=false;
-        }
+
         JsonFile jsonFile=new JsonFile(getApplicationContext());
         String username,pass;
         if(jsonFile.getBillJson()==null||jsonFile.getUserJson()==null||!jsonFile.isValidUser()){//checking login status and exp
@@ -121,15 +116,31 @@ public class MainActivity extends AppCompatActivity {
             PasswordList(Context context, String username, String password) {
                 super(context, username, password);
             }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+            }
+
             @Override
             protected void onPostExecute(Void aVoid) {
+                if(Check.isNetworkAvailable(getApplicationContext())){
+                    internetAvailable=true;
+                }
+                else{
+                    internetAvailable=false;
+                }
 
                 if(internetAvailable&&verifyUser()!=1){
+
                     jsonFile.del();
                     callLoginActivity();
                     //finish();
                 }
+
                 else if(internetAvailable){//update database
+
                     class ChildOfCreateUser extends CreateUser{
 
                         ChildOfCreateUser(Context context, String workSheetID, char position) {
@@ -137,16 +148,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                         @Override
                         protected void onPostExecute(Void aVoid) {
-                            jsonFile.setBillJson(bill);
-                            DatabaseHelper databaseHelper=new DatabaseHelper(getApplicationContext());
-                            if(databaseHelper.insertData(history)){
-                                Toast.makeText(getApplicationContext(),"Bill updated",Toast.LENGTH_SHORT).show();
+                            if(!jsonFile.getUserName().equals("admin")){
+                                jsonFile.setBillJson(bill);
+                                DatabaseHelper databaseHelper=new DatabaseHelper(getApplicationContext());
+                                if(databaseHelper.insertData(history)){
+                                    Toast.makeText(getApplicationContext(),"Bill updated",Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    //Toast.makeText(getApplicationContext(),"Bill is up to date",Toast.LENGTH_SHORT).show();
+                                }
+
                             }
-                            else{
-                                //Toast.makeText(getApplicationContext(),"Bill is up to date",Toast.LENGTH_SHORT).show();
-                            }
-                            if(internetAvailable)
-                                updateUserInfo();
+
+                            updateUserInfo();
                         }
                     }
                     String worksheetID;
@@ -165,15 +179,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         PasswordList passwordList=new PasswordList(getApplicationContext(),username,pass);
+
         passwordList.execute();
     }
     void callLoginActivity(){
-        System.out.println("calliii login a>>>>>>>>>>>");
+
         Intent intent=new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
         finish();
     }
     void updateUserInfo(){
+
         UpdateUserInformation updateUserInformation=new UpdateUserInformation(this);
         updateUserInformation.execute();
     }
